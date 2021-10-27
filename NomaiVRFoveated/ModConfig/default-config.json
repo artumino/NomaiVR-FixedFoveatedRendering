@@ -1,0 +1,53 @@
+{
+  "enabled": true,
+  "settings": {
+    "foveatedRenderingEnabled": {
+      "type": "toggle",
+      "value": true,
+      "title": "Fixed Foveated Rendering",
+      "yes": "Enabled",
+      "no": "Disabled"
+    },
+    "debugView": {
+      "type": "toggle",
+      "value": false,
+      "title": "Debug Mode",
+      "yes": "yes",
+      "no": "no"
+    },
+    "customRegionValues": {
+      "type": "toggle",
+      "value": false,
+      "title": "Manual FFR Configuration",
+      "yes": "Manual",
+      "no": "Auto"
+    },
+    "innerRateOverride": {
+      "type": "slider",
+      "value": 4,
+      "min": 0,
+      "max": 10,
+      "title": "Inner Shading Rate (4 is 1x samplerate)"
+    },
+    "innerRadiusX": 25,
+    "innerRadiusY": 25,
+    "midRateOverride": {
+      "type": "slider",
+      "value": 5,
+      "min": 0,
+      "max": 10,
+      "title": "Middle Shading Rate (4 is 1x samplerate)"
+    },
+    "middleRadiusX": 45,
+    "middleRadiusY": 45,
+    "peripheralRateOverride": {
+      "type": "slider",
+      "value": 9,
+      "min": 0,
+      "max": 10,
+      "title": "Peripheral Shading Rate (4 is 1x samplerate)"
+    },
+    "peripheralRadiusX": 95,
+    "peripheralRadiusY": 95
+  }
+}

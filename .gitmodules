@@ -1,0 +1,3 @@
+[submodule "ViveFoveatedPlugin"]
+	path = ViveFoveatedPlugin
+	url = https://github.com/ViveSoftware/ViveFoveatedRendering.git

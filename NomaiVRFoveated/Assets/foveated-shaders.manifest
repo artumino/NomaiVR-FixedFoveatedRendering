@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 1494903007
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 624881bf5c2d58ef76cce0311dd7919f
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 6370d3f9de9eca57f523bce048404a46
+HashAppended: 0
+ClassTypes:
+- Class: 48
+  Script: {instanceID: 0}
+Assets:
+- Assets/ViveFoveatedRendering/Shader/VisualizeViveFoveatedRendering.shader
+Dependencies: []

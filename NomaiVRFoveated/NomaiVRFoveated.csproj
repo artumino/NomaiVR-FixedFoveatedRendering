@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CE7F4F71-F74E-4BA2-9AE2-930905B4B883}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NomaiVRFoveated</RootNamespace>
+    <AssemblyName>NomaiVRFoveated</AssemblyName>
+    <TargetFramework>net4.6</TargetFramework>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Assembly-CSharp-firstpass, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>$(GameDir)\OuterWilds_Data\Managed\Assembly-CSharp-firstpass.dll</HintPath>
+    </Reference>
+    <Reference Include="netstandard">
+      <HintPath>$(GameDir)\OuterWilds_Data\Managed\netstandard.dll</HintPath>
+    </Reference>
+    <Reference Include="Assembly-CSharp_publicized">
+      <HintPath>$(GameDir)\OuterWilds_Data\Managed\publicized_assemblies\Assembly-CSharp_publicized.dll</HintPath>
+    </Reference>
+    <Reference Include="NAudio-Unity, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\OWML.1.1.8\lib\net35\NAudio-Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UnityEngine">
+      <HintPath>$(GameDir)\OuterWilds_Data\Managed\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AnimationModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(GameDir)\OuterWilds_Data\Managed\UnityEngine.AnimationModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AssetBundleModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(GameDir)\OuterWilds_Data\Managed\UnityEngine.AssetBundleModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>$(GameDir)\OuterWilds_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.PhysicsModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(GameDir)\OuterWilds_Data\Managed\UnityEngine.PhysicsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SpatialTracking, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(GameDir)\OuterWilds_Data\Managed\UnityEngine.SpatialTracking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(GameDir)\OuterWilds_Data\Managed\UnityEngine.TextRenderingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>$(GameDir)\OuterWilds_Data\Managed\UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AudioModule">
+      <HintPath>$(GameDir)\OuterWilds_Data\Managed\UnityEngine.AudioModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UIModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(GameDir)\OuterWilds_Data\Managed\UnityEngine.UIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VRModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(GameDir)\OuterWilds_Data\Managed\UnityEngine.VRModule.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\ViveFoveatedPlugin\UnityPackage\ViveFoveatedRendering\Scripts\*" />
+    <Compile Include="..\ViveFoveatedPlugin\UnityPackage\ViveFoveatedRendering\Plugins\*" />
+    <None Include="Assets\foveated-shaders" />
+    <None Include="Assets\foveated-shaders.manifest" />
+    <None Include="ModConfig\default-config.json" />
+    <None Include="manifest.json" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="OWML" Version="2.1.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="VivePlugin\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="..\ViveFoveatedPlugin\UnityPackage\ViveFoveatedRendering\Plugins\ViveFoveatedRenderingAPI.cs" Link="VivePlugin\ViveFoveatedRenderingAPI.cs" />
+    <Compile Update="..\ViveFoveatedPlugin\UnityPackage\ViveFoveatedRendering\Plugins\ViveFoveatedRenderingEnum.cs" Link="VivePlugin\ViveFoveatedRenderingEnum.cs" />
+    <Compile Update="..\ViveFoveatedPlugin\UnityPackage\ViveFoveatedRendering\Scripts\CommandBufferManager.cs" Link="VivePlugin\CommandBufferManager.cs" />
+    <Compile Update="..\ViveFoveatedPlugin\UnityPackage\ViveFoveatedRendering\Scripts\ViveFoveatedGazeUpdater.cs" Link="VivePlugin\ViveFoveatedGazeUpdater.cs" />
+    <Compile Update="..\ViveFoveatedPlugin\UnityPackage\ViveFoveatedRendering\Scripts\ViveFoveatedInitParam.cs" Link="VivePlugin\ViveFoveatedInitParam.cs" />
+    <Compile Update="..\ViveFoveatedPlugin\UnityPackage\ViveFoveatedRendering\Scripts\ViveFoveatedRendering.cs" Link="VivePlugin\ViveFoveatedRendering.cs" />
+    <Compile Update="..\ViveFoveatedPlugin\UnityPackage\ViveFoveatedRendering\Scripts\ViveFoveatedVisualizer.cs" Link="VivePlugin\ViveFoveatedVisualizer.cs" />
+  </ItemGroup>
+  <Target Name="PostBuild" BeforeTargets="PostBuildEvent">
+    <Exec Command="del &quot;$(GameDir)\Mods\$(ModDir)\config.json&quot;" IgnoreExitCode="true" />
+
+     <Exec Command="md &quot;$(OwmlDir)\Mods\$(ModDir)&quot;" IgnoreExitCode="true" />
+     <Exec Command="md &quot;$(OwmlDir)\Mods\$(ModDir)\plugin&quot;" IgnoreExitCode="true" />
+     <Exec Command="md &quot;$(OwmlDir)\Mods\$(ModDir)\assets&quot;" IgnoreExitCode="true" />
+
+     <Exec Command="copy /y &quot;$(TargetPath)&quot; &quot;$(OwmlDir)\Mods\$(ModDir)&quot;" />
+
+     <Exec Command="copy /y &quot;$(ProjectDir)..\ViveFoveatedPlugin\UnityPackage\ViveFoveatedRendering\Plugins\x64\*.dll&quot; &quot;$(OwmlDir)\Mods\$(ModDir)\plugin&quot;" />
+     <Exec Command="copy /y &quot;$(ProjectDir)\Assets\*&quot; &quot;$(OwmlDir)\Mods\$(ModDir)\assets&quot;" />
+     <Exec Command="copy /y &quot;$(ProjectDir)\ModConfig\default-config.json&quot; &quot;$(OwmlDir)\Mods\$(ModDir)&quot;" />
+     <Exec Command="copy /y &quot;$(ProjectDir)\manifest.json&quot; &quot;$(OwmlDir)\Mods\$(ModDir)&quot;" />
+  </Target>
+</Project>

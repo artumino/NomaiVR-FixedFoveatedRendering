@@ -1,0 +1,9 @@
+{
+  "filename": "NomaiVRFoveated.dll",
+  "author": "artum",
+  "name": "NomaiVRFoveated",
+  "uniqueName": "Artum.NomaiVRFoveated",
+  "description": "Plugin for NomaiVR that enables foveated rendering on supported hardware.",
+  "version": "1.0.0",
+  "owmlVersion": "2.1.0"
+}
