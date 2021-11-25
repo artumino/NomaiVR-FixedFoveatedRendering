@@ -12,7 +12,6 @@ namespace NomaiVRFoveated
     public class NomaiVRFoveated : ModBehaviour
     {
         public static IModHelper Helper;
-        public static Assembly ViveFFRPlugin;
         public static Dictionary<string, Shader> Shaders;
 
         internal void Start()
@@ -51,6 +50,53 @@ namespace NomaiVRFoveated
         {
             Helper = ModHelper;
             ModSettings.SetConfig(config);
+        }
+    }
+
+    /// <summary>
+    /// Patches the game to use both old and new input system
+    /// Moves VR Plugin files to the appropriate folders
+    /// </summary>
+    public static class NomaiVRFoveatedPatcher
+    {
+        //Called by OWML
+        public static void Main(string[] args)
+        {
+            var basePath = args.Length > 0 ? args[0] : ".";
+            var pluginsPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "OuterWilds_Data", "Plugins", "x86_64");
+            CopyGameFiles(pluginsPath, Path.Combine(basePath, "plugin"));
+        }
+
+        private static void CopyGameFiles(string gamePath, string filesPath)
+        {
+            // Get the subdirectories for the specified directory.
+            var dir = new DirectoryInfo(filesPath);
+
+            if (!dir.Exists)
+            {
+                throw new DirectoryNotFoundException(
+                    "Source directory does not exist or could not be found: "
+                    + filesPath);
+            }
+
+            var dirs = dir.GetDirectories();
+
+            // If the destination directory doesn't exist, create it.       
+            Directory.CreateDirectory(gamePath);
+
+            // Get the files in the directory and copy them to the new location.
+            var files = dir.GetFiles();
+            foreach (var file in files)
+            {
+                var tempPath = Path.Combine(gamePath, file.Name);
+                file.CopyTo(tempPath, true);
+            }
+
+            foreach (var subdir in dirs)
+            {
+                var tempPath = Path.Combine(gamePath, subdir.Name);
+                CopyGameFiles(tempPath, subdir.FullName);
+            }
         }
     }
 }
