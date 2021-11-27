@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="..\ViveFoveatedPlugin\UnityPackage\ViveFoveatedRendering\Scripts\*" />
     <Compile Include="..\ViveFoveatedPlugin\UnityPackage\ViveFoveatedRendering\Plugins\*" />
+    <Compile Remove="..\ViveFoveatedPlugin\UnityPackage\ViveFoveatedRendering\Scripts\ViveFoveatedRendering.cs" />
     <None Include="Assets\foveated-shaders" />
     <None Include="Assets\foveated-shaders.manifest" />
     <None Include="ModConfig\default-config.json" />
@@ -58,15 +59,11 @@
     <PackageReference Include="OWML" Version="2.1.0" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="VivePlugin\" />
-  </ItemGroup>
-  <ItemGroup>
     <Compile Update="..\ViveFoveatedPlugin\UnityPackage\ViveFoveatedRendering\Plugins\ViveFoveatedRenderingAPI.cs" Link="VivePlugin\ViveFoveatedRenderingAPI.cs" />
     <Compile Update="..\ViveFoveatedPlugin\UnityPackage\ViveFoveatedRendering\Plugins\ViveFoveatedRenderingEnum.cs" Link="VivePlugin\ViveFoveatedRenderingEnum.cs" />
     <Compile Update="..\ViveFoveatedPlugin\UnityPackage\ViveFoveatedRendering\Scripts\CommandBufferManager.cs" Link="VivePlugin\CommandBufferManager.cs" />
     <Compile Update="..\ViveFoveatedPlugin\UnityPackage\ViveFoveatedRendering\Scripts\ViveFoveatedGazeUpdater.cs" Link="VivePlugin\ViveFoveatedGazeUpdater.cs" />
     <Compile Update="..\ViveFoveatedPlugin\UnityPackage\ViveFoveatedRendering\Scripts\ViveFoveatedInitParam.cs" Link="VivePlugin\ViveFoveatedInitParam.cs" />
-    <Compile Update="..\ViveFoveatedPlugin\UnityPackage\ViveFoveatedRendering\Scripts\ViveFoveatedRendering.cs" Link="VivePlugin\ViveFoveatedRendering.cs" />
     <Compile Update="..\ViveFoveatedPlugin\UnityPackage\ViveFoveatedRendering\Scripts\ViveFoveatedVisualizer.cs" Link="VivePlugin\ViveFoveatedVisualizer.cs" />
   </ItemGroup>
   <Target Name="PostBuild" BeforeTargets="PostBuildEvent">
