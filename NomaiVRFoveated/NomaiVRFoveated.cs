@@ -63,8 +63,34 @@ namespace NomaiVRFoveated
         public static void Main(string[] args)
         {
             var basePath = args.Length > 0 ? args[0] : ".";
-            var pluginsPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "OuterWilds_Data", "Plugins", "x86_64");
+            var pluginsPath = Path.Combine(GetDataPath(AppDomain.CurrentDomain.BaseDirectory), "Plugins", "x86_64");
             CopyGameFiles(pluginsPath, Path.Combine(basePath, "plugin"));
+        }
+
+        private static string GetExecutableName(string gamePath)
+        {
+            var executableNames = new[] { "Outer Wilds.exe", "OuterWilds.exe" };
+            foreach (var executableName in executableNames)
+            {
+                var executablePath = Path.Combine(gamePath, executableName);
+                if (File.Exists(executablePath))
+                {
+                    return Path.GetFileNameWithoutExtension(executablePath);
+                }
+            }
+
+            throw new FileNotFoundException($"Outer Wilds exe file not found in {gamePath}");
+        }
+
+        private static string GetDataDirectoryName()
+        {
+            var gamePath = AppDomain.CurrentDomain.BaseDirectory;
+            return $"{GetExecutableName(gamePath)}_Data";
+        }
+
+        private static string GetDataPath(string gamePath)
+        {
+            return Path.Combine(gamePath, $"{GetDataDirectoryName()}");
         }
 
         private static void CopyGameFiles(string gamePath, string filesPath)
@@ -95,7 +121,7 @@ namespace NomaiVRFoveated
             foreach (var subdir in dirs)
             {
                 var tempPath = Path.Combine(gamePath, subdir.Name);
-                CopyGameFiles(tempPath, subdir.FullName);
+                CopyGameFiles(tempPath.Replace("OuterWilds_Data", GetDataDirectoryName()), subdir.FullName);
             }
         }
     }
