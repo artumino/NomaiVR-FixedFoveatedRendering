@@ -2,7 +2,7 @@
   "filename": "NomaiVRFoveated.dll",
   "patcher": "NomaiVRFoveated.dll",
   "author": "artum",
-  "name": "NomaiVRFoveated",
+  "name": "NomaiVR Fixed Foveated Rendering",
   "uniqueName": "Artum.NomaiVRFoveated",
   "description": "Plugin for NomaiVR that enables foveated rendering on supported hardware.",
   "version": "1.0.2",
