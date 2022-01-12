@@ -21,6 +21,9 @@ namespace NomaiVRFoveated
             //Load Shaders
             LoadShaders();
 
+            //Shader patches
+            ModHelper.HarmonyHelper.AddPrefix<Shader>(nameof(Shader.Find), typeof(NomaiVRFoveated), nameof(NomaiVRFoveated.FindShaderOverride));
+
             SetupFoveatedEnabler();
             LoadManager.OnCompleteSceneLoad += OnSceneLoad;
         }
@@ -28,6 +31,16 @@ namespace NomaiVRFoveated
         private void OnSceneLoad(OWScene originalScene, OWScene loadScene)
         {
             SetupFoveatedEnabler();
+        }
+
+        private static bool FindShaderOverride(string name, ref Shader __result)
+        {
+            if(Shaders.ContainsKey(name))
+            {
+                __result = Shaders[name];
+                return false;
+            }
+            return true;
         }
 
         private void LoadShaders()

@@ -30,12 +30,35 @@ namespace NomaiVRFoveated
 			if (ModSettings.FoveatedRenderingEnabled)
 			{
 				foveatedRenderer = foveatedRenderer ?? cameraObject.AddComponent<ViveFoveatedRendering>();
+				foveatedGazeTracker = foveatedGazeTracker ?? cameraObject.AddComponent<ViveFoveatedGazeUpdater>();
+
 				foveatedRenderer.enabled = false;
 				foveatedRenderer.enabled = true;
 
+				if (ModSettings.CustomRegionValues)
+                {
+					//Update settings
+					foveatedRenderer.SetPatternPreset(ShadingPatternPreset.SHADING_PATTERN_CUSTOM);
+					foveatedRenderer.SetRegionRadii(TargetArea.INNER, ModSettings.InnerRadii);
+					foveatedRenderer.SetRegionRadii(TargetArea.MIDDLE, ModSettings.MidRadii);
+					foveatedRenderer.SetRegionRadii(TargetArea.PERIPHERAL, ModSettings.PeripheralRadii);
+
+					foveatedRenderer.SetShadingRatePreset(ShadingRatePreset.SHADING_RATE_CUSTOM);
+					foveatedRenderer.SetShadingRate(TargetArea.INNER, ModSettings.InnerShading);
+					foveatedRenderer.SetShadingRate(TargetArea.MIDDLE, ModSettings.MidShading);
+					foveatedRenderer.SetShadingRate(TargetArea.PERIPHERAL, ModSettings.PeripheralShading);
+				}
+				else if(!ViveFoveatedInitParam.SetParamByHMD(foveatedRenderer))
+                {
+					foveatedRenderer.SetPatternPreset(ShadingPatternPreset.SHADING_PATTERN_NARROW);
+					foveatedRenderer.SetShadingRatePreset(ShadingRatePreset.SHADING_RATE_HIGHEST_PERFORMANCE);
+				}
+
 				if (ModSettings.DebugView)
 				{
-					ViveFoveatedVisualizer viveFoveatedVisualizer = visualizer ?? cameraObject.AddComponent<ViveFoveatedVisualizer>();
+					visualizer = visualizer ?? cameraObject.AddComponent<ViveFoveatedVisualizer>();
+					visualizer.enabled = false;
+					visualizer.enabled = true;
 				}
 				else if (visualizer != null) Destroy(visualizer);
 			}
