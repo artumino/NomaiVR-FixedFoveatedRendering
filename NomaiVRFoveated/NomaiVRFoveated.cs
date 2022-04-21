@@ -30,7 +30,12 @@ namespace NomaiVRFoveated
 
         private void OnSceneLoad(OWScene originalScene, OWScene loadScene)
         {
-            SetupFoveatedEnabler();
+            if (loadScene != OWScene.PostCreditsScene
+                && loadScene != OWScene.Credits_Fast
+                && loadScene != OWScene.Credits_Final)
+            {
+                SetupFoveatedEnabler();
+            }
         }
 
         private static bool FindShaderOverride(string name, ref Shader __result)

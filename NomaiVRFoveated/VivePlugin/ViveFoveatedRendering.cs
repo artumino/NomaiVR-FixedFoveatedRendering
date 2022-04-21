@@ -204,6 +204,8 @@ namespace HTC.UnityPlugin.FoveatedRendering
                     commandBufferMgr.AppendCommands("Enable Foveated Rendering", CameraEvent.BeforeForwardOpaque,
                         buf => buf.IssuePluginEvent(ViveFoveatedRenderingAPI.GetRenderEventFunc(), (int)EventID.ENABLE_FOVEATED_RENDERING),
                         buf => buf.ClearRenderTarget(false, true, Color.black));
+                    commandBufferMgr.AppendCommands("Enable Foveated Rendering", CameraEvent.AfterForwardOpaque,
+                        buf => buf.IssuePluginEvent(ViveFoveatedRenderingAPI.GetRenderEventFunc(), (int)EventID.DISABLE_FOVEATED_RENDERING));
                 }
                 else if (currentRenderingPath == RenderingPath.DeferredShading)
                 {
@@ -211,7 +213,12 @@ namespace HTC.UnityPlugin.FoveatedRendering
                         buf => buf.IssuePluginEvent(ViveFoveatedRenderingAPI.GetRenderEventFunc(), (int)EventID.ENABLE_FOVEATED_RENDERING),
                         buf => buf.ClearRenderTarget(false, true, Color.black));
 
-                    commandBufferMgr.AppendCommands("Disable Foveated Rendering - GBuffer", CameraEvent.AfterGBuffer,
+                    commandBufferMgr.AppendCommands("Disable Foveated Rendering - GBuffer", CameraEvent.BeforeLighting,
+                        buf => buf.IssuePluginEvent(ViveFoveatedRenderingAPI.GetRenderEventFunc(), (int)EventID.DISABLE_FOVEATED_RENDERING));
+
+                    commandBufferMgr.AppendCommands("Enable Foveated Rendering", CameraEvent.BeforeForwardOpaque,
+                        buf => buf.IssuePluginEvent(ViveFoveatedRenderingAPI.GetRenderEventFunc(), (int)EventID.ENABLE_FOVEATED_RENDERING));
+                    commandBufferMgr.AppendCommands("Enable Foveated Rendering", CameraEvent.AfterForwardOpaque,
                         buf => buf.IssuePluginEvent(ViveFoveatedRenderingAPI.GetRenderEventFunc(), (int)EventID.DISABLE_FOVEATED_RENDERING));
                 }
 

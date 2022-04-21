@@ -5,7 +5,7 @@
   "name": "NomaiVR Fixed Foveated Rendering",
   "uniqueName": "Artum.NomaiVRFoveated",
   "description": "Plugin for NomaiVR that enables foveated rendering on supported hardware.",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "dependencies": [ "Raicuparta.NomaiVR" ],
   "owmlVersion": "2.3.0"
 }
